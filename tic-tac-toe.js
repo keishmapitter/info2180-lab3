@@ -19,6 +19,7 @@ window.onload= function(){
 
     for(let a=0; a<=8; a++){
         TTB[a].setAttribute("class","square");
+        TTB[a].innerHTML="";
 
         
     }
@@ -51,18 +52,18 @@ window.onload= function(){
     }
     const Gameplay= (TTBP,index) =>{
         console.log(TTBP.innerText)
-        if(TTBP.innerText !== 'X' || TTBP.innerText !== 'O'){
+        if((TTBP.innerText !== 'X' || TTBP.innerText !== 'O')&&TTBP.innerHTML===""){
             TTBP.innerText= playone;
             TTBP.classList.add(playone);
             poslst[index]=playone;
             console.log(poslst);
-            checkWin();
             if(playone === 'X'){
                 playone='O';
 
             }else{
                 playone='X';
             }
+            checkWin();
         }
 
     }
@@ -73,6 +74,7 @@ window.onload= function(){
                 remove[NG].textContent = '';
                 remove[NG].setAttribute('class', 'square');
                 console.log('New Game has started');
+                TTB[NG].innerHTML="";
             };
     
     })
