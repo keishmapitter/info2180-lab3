@@ -19,7 +19,6 @@ window.onload= function(){
 
     for(let a=0; a<=8; a++){
         TTB[a].setAttribute("class","square");
-        TTB[a].innerHTML="";
 
         
     }
@@ -52,32 +51,33 @@ window.onload= function(){
     }
     const Gameplay= (TTBP,index) =>{
         console.log(TTBP.innerText)
-        if((TTBP.innerText !== 'X' || TTBP.innerText !== 'O')&&TTBP.innerHTML===""){
+        if((TTBP.innerText !== 'X' || TTBP.innerText !== 'O')&&TTBP.innerHTML===''){
             TTBP.innerText= playone;
             TTBP.classList.add(playone);
             poslst[index]=playone;
             console.log(poslst);
+            checkWin();
             if(playone === 'X'){
                 playone='O';
 
             }else{
                 playone='X';
             }
-            checkWin();
         }
 
     }
 
     start.addEventListener('click', ()=>{
             let remove = document.getElementById('board').children;
+            status.classList.remove('you-won');
+            status.innerHTML="Move your mouse over a square and click to play an X or an O.";
+            poslst = ['', '', '', '', '', '', '', '', ''];
             for(let NG = 0; NG <= 8; NG++){
                 remove[NG].textContent = '';
                 remove[NG].setAttribute('class', 'square');
                 console.log('New Game has started');
-                TTB[NG].innerHTML="";
             };
     
     })
 
 }
-
