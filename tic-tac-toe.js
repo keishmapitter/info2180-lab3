@@ -2,12 +2,9 @@ window.onload= function(){
     const status = document.getElementById("status");
     const board = document.getElementById("board");
     const start = document.getElementsByClassName("btn")[0];
-   
-
     const TTB= board.querySelectorAll('div');
     let playone='X';
     let poslst = ['', '', '', '', '', '', '', '', ''];
-
     const winnCon = [
         [0, 1, 2],
         [3, 4, 5],
@@ -46,7 +43,7 @@ window.onload= function(){
                 continue;
             }  
             if (winningplay1=== winningplay2 && winningplay2 === winningplay3){
-                status.innerHTML= 'Congratulations!' + pos1 +' is the winner';
+                status.innerHTML= 'Congratulations!' + winningplay1 +' is the winner';
                 status.classList.add('you-won');
                 break;
             }     
@@ -77,8 +74,8 @@ window.onload= function(){
                 remove[NG].setAttribute('class', 'square');
                 console.log('New Game has started');
             };
-        })
     
+    })
 
 }
 
