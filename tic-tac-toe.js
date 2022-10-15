@@ -1,12 +1,11 @@
 window.onload= function(){
     const status = document.getElementById("status");
     const board = document.getElementById("board");
-    const controls= document.getElementsByClassName("controls");
     const start = document.getElementsByClassName("btn")[0];
    
 
     const TTB= board.querySelectorAll('div');
-    let play='X';
+    let playone='X';
     let poslst = ['', '', '', '', '', '', '', '', ''];
 
     const winnCon = [
@@ -40,13 +39,13 @@ window.onload= function(){
         for(let i=0; i<=7; i++){
             const win = winnCon[i];
  
-            const pos1= poslst[win[0]];
-            const pos2 = poslst[win[1]];
-            const pos3 = poslst[win[2]];
-            if (pos1 === ''|| pos2 === ''|| pos3===''){
+            const winningplay1= poslst[win[0]];
+            const winningplay2 = poslst[win[1]];
+            const winningplay3= poslst[win[2]];
+            if (winningplay1 === ''|| winningplay2 === ''|| winningplay3===''){
                 continue;
             }  
-            if (pos1=== pos2 && pos2 === pos3){
+            if (winningplay1=== winningplay2 && winningplay2 === winningplay3){
                 status.innerHTML= 'Congratulations!' + pos1 +' is the winner';
                 status.classList.add('you-won');
                 break;
@@ -56,32 +55,30 @@ window.onload= function(){
     const Gameplay= (TTBP,index) =>{
         console.log(TTBP.innerText)
         if(TTBP.innerText !== 'X' || TTBP.innerText !== 'O'){
-            TTBP.innerText= play;
-            TTBP.classList.add(play);
-            poslst[index]=play;
+            TTBP.innerText= playone;
+            TTBP.classList.add(playone);
+            poslst[index]=playone;
             console.log(poslst);
             checkWin();
-            if(play === 'X'){
-                play='O';
+            if(playone === 'X'){
+                playone='O';
 
             }else{
-                play='X';
+                playone='X';
             }
         }
 
     }
 
     start.addEventListener('click', ()=>{
-        let rest = controls;
-        let childrest = rest[0].addEventListener('click', function(){
-            let remove_att = document.getElementById('board').children;
-            for(let rm = 0; rm <= 8; rm++){
-                remove_att[rm].textContent = '';
-                remove_att[rm].setAttribute('class', 'square');
-                console.log('New Game');
+            let remove = document.getElementById('board').children;
+            for(let NG = 0; NG <= 8; NG++){
+                remove[NG].textContent = '';
+                remove[NG].setAttribute('class', 'square');
+                console.log('New Game has started');
             };
         })
-    })
+    
 
 }
 
